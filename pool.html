@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=1440">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Swimming Pool – Club72 Gym</title>
 <meta name="description" content="Temperature-controlled indoor swimming pool at Club72 Mohali. Lessons, steam, sauna, ice showers. Open daily 7 AM to 9 PM, closed Thursdays.">
 <meta name="theme-color" content="#0B0B0C">
@@ -11,118 +11,272 @@
 <meta property="og:image" content="images/club72-building.jpg">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,700;1,800&amp;display=swap" rel="stylesheet">
 <style>
-body{margin:0;background:#ffffff;font-family:'Plus Jakarta Sans',system-ui,sans-serif;color:#0E0E0F;-webkit-font-smoothing:antialiased}
-a{color:inherit;text-decoration:none}a:hover{opacity:.8}
-button,input,select,textarea{font-family:inherit}
-button{cursor:pointer}
+body{margin:0;background:#0A1A33;font-family:'Plus Jakarta Sans',system-ui,sans-serif;color:#ffffff;-webkit-font-smoothing:antialiased;-webkit-text-size-adjust:100%}
+a{color:inherit;text-decoration:none}a:hover{opacity:.85}
+button,input,select,textarea{font-family:inherit}button{cursor:pointer}
+input,select,textarea{font-size:16px}
 :focus-visible{outline:3px solid #EC2C3B;outline-offset:3px}
-@media (prefers-reduced-motion: reduce){*{transition:none!important;animation:none!important}}
+
+@keyframes rise{from{transform:translateY(110%)}to{transform:none}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes reelUp{from{transform:translateY(0)}to{transform:translateY(-50%)}}
+@keyframes reelDown{from{transform:translateY(-50%)}to{transform:translateY(0)}}
+@keyframes marqL{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes marqR{from{transform:translateX(-50%)}to{transform:translateX(0)}}
+@keyframes grow{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(74,222,128,.6)}70%{box-shadow:0 0 0 10px rgba(74,222,128,0)}100%{box-shadow:0 0 0 0 rgba(74,222,128,0)}}
+@keyframes ripple{from{transform:translate(-50%,-50%) scale(.2);opacity:.9}to{transform:translate(-50%,-50%) scale(2.4);opacity:0}}
+@keyframes wave{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes slash{from{clip-path:polygon(0 0,0 0,0 100%,0 100%)}to{clip-path:polygon(0 0,100% 0,100% 100%,0 100%)}}
+@keyframes scrollcue{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.ln{display:block;overflow:hidden;padding-bottom:.04em}
+.ln>span{display:block;animation:rise 1s cubic-bezier(.2,.8,.2,1) both}
+.fu{animation:fadeUp .9s cubic-bezier(.2,.8,.2,1) both}
+.spin{animation:spin 22s linear infinite}
+.reel-up{animation:reelUp 38s linear infinite}
+.reel-down{animation:reelDown 44s linear infinite}
+.mq-l{animation:marqL 32s linear infinite}
+.mq-r{animation:marqR 40s linear infinite}
+.bar{transform-origin:left;animation:grow 1.8s cubic-bezier(.2,.8,.2,1) both}
+.live{animation:pulse 2s infinite}
+.rip{animation:ripple 4.5s cubic-bezier(.2,.6,.3,1) infinite}
+.wv1{animation:wave 14s linear infinite}
+.wv2{animation:wave 22s linear infinite reverse}
+.slash{animation:slash 1.4s cubic-bezier(.7,0,.2,1) .2s both}
+.cue{animation:scrollcue 2.2s ease-in-out infinite}
+.float{animation:float 5s ease-in-out infinite}
+.btn-red{transition:background .25s,transform .25s}
+.btn-red:hover{background:#B3121F;opacity:1;transform:translateY(-2px)}
+.btn-red .arr{transition:transform .3s}
+.btn-red:hover .arr{transform:translateX(4px) rotate(-45deg)}
+.chip{transition:background .25s,color .25s,border-color .25s}
+.chip:hover{background:#EC2C3B;border-color:#EC2C3B;color:#ffffff;opacity:1}
+.zones{display:flex;gap:10px}
+.zone{position:relative;flex:1 1 0;min-width:0;border-radius:22px;overflow:hidden;color:#fff;transition:flex-grow .8s cubic-bezier(.2,.8,.2,1)}
+.zone img{transition:transform 1.2s cubic-bezier(.2,.8,.2,1)}
+.zone .zd{opacity:0;transform:translateY(24px);transition:opacity .45s,transform .6s}
+.zone .zv{opacity:1;transition:opacity .3s}
+.zone.open,.zone:hover,.zone:focus-visible{flex-grow:5;opacity:1}
+.zones:hover .zone.open:not(:hover){flex-grow:1}
+.zone.open .zd,.zone:hover .zd,.zone:focus-visible .zd{opacity:1;transform:none;transition-delay:.25s}
+.zones:hover .zone.open:not(:hover) .zd{opacity:0;transform:translateY(24px);transition-delay:0s}
+.zone.open .zv,.zone:hover .zv,.zone:focus-visible .zv{opacity:0}
+.zones:hover .zone.open:not(:hover) .zv{opacity:1}
+.zone:hover img,.zone.open img{transform:scale(1.06)}
+.outline{color:transparent;-webkit-text-stroke:1.5px rgba(255,255,255,.55)}
+@media (prefers-reduced-motion: reduce){
+.ln>span,.fu,.bar,.slash{animation:none!important;opacity:1!important;transform:none!important;clip-path:none!important}
+.spin,.reel-up,.reel-down,.mq-l,.mq-r,.live,.rip,.wv1,.wv2,.cue,.float{animation:none!important}
+.zone,.zone img,.zone .zd{transition:none!important}
+}
+
+
+html,body{overflow-x:hidden}
+.root{width:100%;overflow-x:clip}
+.px{padding-left:clamp(20px,4.5vw,80px);padding-right:clamp(20px,4.5vw,80px)}
+.hero{position:relative;min-height:clamp(760px,100vh,940px);box-sizing:border-box;display:flex;flex-direction:column;padding-top:24px;padding-bottom:28px}
+.hero-reels{position:absolute;top:0;right:0;bottom:0;width:44%;display:flex;gap:14px;padding:0 24px;overflow:hidden}
+.hero-fade{position:absolute;top:0;right:0;bottom:0;width:49%;background:linear-gradient(90deg,#0B0B0C 0%,rgba(11,11,12,.2) 22%,rgba(11,11,12,0) 60%),linear-gradient(180deg,#0B0B0C 0%,rgba(11,11,12,0) 18%,rgba(11,11,12,0) 78%,#0B0B0C 100%)}
+.hero-copy{position:relative;z-index:2;flex-grow:1;display:flex;flex-direction:column;justify-content:center;gap:26px;width:min(800px,58%);padding:40px 0}
+.badge{position:absolute;z-index:3;left:53%;top:56%;width:150px;height:150px}
+.hero-status{position:relative;z-index:2;display:flex;align-items:center;flex-wrap:wrap;gap:14px 32px;padding-top:20px;border-top:1px solid rgba(255,255,255,.14);width:min(780px,58%)}
+.nav-d{display:flex}
+.menu-btn{display:none}
+.split{display:flex;gap:clamp(24px,5vw,72px)}
+.split-media{position:relative;flex-shrink:0;border-radius:28px;overflow:hidden}
+.stats{display:grid;grid-template-columns:minmax(0,1.5fr) repeat(3,minmax(0,1fr));gap:clamp(24px,3.5vw,48px)}
+.zones{height:580px}
+.cb-row{display:flex;gap:10px;background:#fff;border-radius:999px;padding:6px}
+.foot-nav{display:grid;grid-template-columns:repeat(4,auto);gap:14px 48px}
+.mbar{display:none}
+.row-wrap{display:flex;flex-wrap:wrap}
+@media (max-width:1100px){
+.nav-d{display:none}
+.menu-btn{display:flex}
+.hero-reels{width:100%;opacity:.45;padding:0}
+.hero-fade{width:100%;background:linear-gradient(180deg,rgba(11,11,12,.85) 0%,rgba(11,11,12,.55) 40%,rgba(11,11,12,.9) 100%)}
+.hero-copy{width:100%}
+.hero-status{width:100%}
+.badge{left:auto;right:24px;top:auto;bottom:120px;width:112px;height:112px}
+.badge svg{width:112px;height:112px}
+.stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+.zones{height:auto;display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
+.zone{height:340px}
+.zone .zd{opacity:1!important;transform:none!important}
+.zone .zv{display:none}
+.zone.open,.zone:hover{flex-grow:1}
+.foot-nav{grid-template-columns:repeat(3,auto)}
+}
+@media (max-width:860px){
+.split{flex-direction:column}
+.split-media{width:100%!important;height:340px;min-height:0!important}
+.cue-wrap{display:none!important}
+}
+@media (max-width:640px){
+.hero{min-height:auto;padding-bottom:24px}
+.badge{display:none}
+.enq-top{display:none!important}
+.stats{grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 20px}
+.zones{grid-template-columns:minmax(0,1fr)}
+.zone{height:300px}
+.cb-row{flex-wrap:wrap;border-radius:24px}
+.cb-row input{flex-basis:60%}
+.cb-row button{flex-basis:100%}
+.foot-nav{grid-template-columns:repeat(2,auto);gap:14px 32px}
+.mbar{display:grid;position:sticky;bottom:0;z-index:40;grid-template-columns:1fr 1fr;gap:8px;padding:10px 12px calc(10px + env(safe-area-inset-bottom));background:rgba(11,11,12,.92);backdrop-filter:blur(10px);border-top:1px solid rgba(255,255,255,.12)}
+.hide-sm{display:none!important}
+.hero h1{font-size:min(96px,calc((100vw - 40px) / 5.3))!important}
+}
+@media (hover:none){
+.zone .zd{opacity:1!important;transform:none!important}
+.zone .zv{display:none}
+}
+
+
+.g2,.g3,.g4,.g5{display:grid;gap:16px}
+.g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.g4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.g5{grid-template-columns:repeat(5,minmax(0,1fr))}
+.f2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 20px}
+.sec{padding-top:clamp(56px,7vw,104px);padding-bottom:clamp(56px,7vw,104px)}
+.phero{position:relative;box-sizing:border-box;display:flex;flex-direction:column;gap:clamp(40px,6vw,80px);padding-top:24px;padding-bottom:clamp(40px,6vw,72px);overflow:hidden}
+.h-xl{margin:0;font-size:clamp(46px,9vw,132px);line-height:.9;font-weight:800;font-style:italic;letter-spacing:-.045em;text-transform:uppercase;overflow-wrap:break-word}
+.h-fit{font-size:var(--fs)}
+.h-l{margin:0;font-size:clamp(30px,5.6vw,80px);line-height:.94;font-weight:800;font-style:italic;letter-spacing:-.04em;text-transform:uppercase;overflow-wrap:break-word}
+.h-m{margin:0;font-size:clamp(28px,3.4vw,48px);line-height:1.02;font-weight:800;font-style:italic;letter-spacing:-.03em;text-transform:uppercase}
+.lead{margin:0;font-size:clamp(16px,1.35vw,19px);line-height:1.6}
+.card-lift{transition:transform .35s cubic-bezier(.2,.8,.2,1)}
+.card-lift:hover{transform:translateY(-4px);opacity:1}
+.card-lift img{transition:transform 1s cubic-bezier(.2,.8,.2,1)}
+.card-lift:hover img{transform:scale(1.05)}
+.formcard{background:#fff;color:#0E0E0F;border-radius:28px;padding:clamp(22px,3vw,40px)}
+@media (max-width:1100px){.g4,.g3,.g5{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:860px){.h-fit{font-size:min(var(--mx),calc((100vw - 48px) / var(--n)))}}
+@media (max-width:640px){.g2,.g3,.g4,.g5,.f2{grid-template-columns:minmax(0,1fr)}.formcard{border-radius:22px}}
+
+@keyframes kb{from{transform:scale(1)}to{transform:scale(1.08)}}@media (prefers-reduced-motion: reduce){.kb{animation:none!important}}
 </style>
 </head>
 <body>
 <template id="tpl">
-<div style="width: 1440px; height: 3952px; box-sizing: border-box; padding: 16px; display: flex; flex-direction: column; gap: 16px; background: #ffffff; font-family: 'Plus Jakarta Sans', system-ui, sans-serif; position: relative;">
-<section style="height: 760px; box-sizing: border-box; border-radius: 28px; background: #0A1A33; color: #ffffff; padding: 28px 40px 40px; display: flex; flex-direction: column; gap: 36px;">
-<header style="position: relative; z-index: 2; display: flex; align-items: center; justify-content: space-between; color: #ffffff;">
+<div class="root" style="display: flex; flex-direction: column; background: #0A1A33; color: #ffffff; font-family: 'Plus Jakarta Sans', system-ui, sans-serif;">
+<section class="phero px" style="background: #0A1A33; padding-bottom: clamp(110px, 12vw, 170px);">
+<header class="fu" style="position: relative; z-index: 4; display: flex; align-items: center; justify-content: space-between; gap: 16px;">
 <a href="index.html" aria-label="Club72 Gym home" style="display: inline-flex; flex-direction: column; align-items: flex-end; line-height: 1;">
-<span style="font-style: italic; font-weight: 800; font-size: 26px; letter-spacing: -0.02em; color: #ffffff;">CLUB<span style="color: #EC2C3B;">72</span> GYM</span>
-<span style="font-size: 8px; font-weight: 700; letter-spacing: 0.14em; color: rgba(255,255,255,0.7); margin-top: 3px;">BY PROULTIMATE</span>
+<span style="font-style: italic; font-weight: 800; font-size: 24px; letter-spacing: -0.02em; color: #ffffff;">CLUB<span style="color: #EC2C3B;">72</span> GYM</span>
+<span style="font-size: 7px; font-weight: 700; letter-spacing: 0.14em; color: rgba(255,255,255,0.7); margin-top: 3px;">BY PROULTIMATE</span>
 </a>
-<nav aria-label="Main" style="display: flex; gap: 32px; font-size: 15px; font-weight: 600;">
-<a href="index.html" style="padding: 6px 0; border-bottom: 2px solid transparent;">Home</a>
-<a href="services.html" style="padding: 6px 0; border-bottom: 2px solid transparent;">Services</a>
-<a href="pool.html" aria-current="page" style="padding: 6px 0; border-bottom: 2px solid #EC2C3B;">Pool</a>
-<a href="mmaacademy.html" style="padding: 6px 0; border-bottom: 2px solid transparent;">MMA Academy</a>
-<a href="about.html" style="padding: 6px 0; border-bottom: 2px solid transparent;">About</a>
-<a href="contact.html" style="padding: 6px 0; border-bottom: 2px solid transparent;">Contact</a>
-</nav>
-<div style="display: flex; align-items: center; gap: 20px; font-size: 15px; font-weight: 600;">
-<a href="tel:+918350007272" style="display: flex; align-items: center; gap: 8px;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0;"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg> +91 83500 07272</a>
-<a href="membership.html" style="display: flex; align-items: center; height: 46px; padding: 0 22px; border-radius: 999px; background: #D11F2E; color: #ffffff; font-weight: 700;">Enquire now</a>
+<nav aria-label="Main" class="nav-d" style="gap: 30px; font-size: 15px; font-weight: 600; background: rgba(11,11,12,0.55); border: 1px solid rgba(255,255,255,0.14); border-radius: 999px; padding: 12px 28px;"><a href="services.html" style="padding: 6px 0; border-bottom: 2px solid transparent;">Services</a><a href="pool.html" aria-current="page" style="padding: 6px 0; border-bottom: 2px solid #EC2C3B;">Pool</a><a href="mmaacademy.html" style="padding: 6px 0; border-bottom: 2px solid transparent;">MMA Academy</a><a href="about.html" style="padding: 6px 0; border-bottom: 2px solid transparent;">About</a><a href="contact.html" style="padding: 6px 0; border-bottom: 2px solid transparent;">Contact</a></nav>
+<div style="display: flex; align-items: center; gap: 10px;">
+<a href="membership.html" class="btn-red enq-top" style="display: inline-flex; align-items: center; height: 48px; padding: 0 22px; border-radius: 999px; background: #D11F2E; color: #ffffff; font-size: 15px; font-weight: 700;">Enquire now</a>
+<button type="button" class="menu-btn" onClick="{{toggleMenu}}" aria-expanded="{{menuOpen}}" aria-controls="m-menu" aria-label="Open menu" style="width: 48px; height: 48px; border-radius: 50%; border: 0; background: rgba(255,255,255,0.14); align-items: center; justify-content: center;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0;"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
 </div>
 </header>
-<div style="flex-grow: 1; display: flex; gap: 40px; min-height: 0;">
-<div style="width: 600px; display: flex; flex-direction: column; justify-content: center; gap: 22px;">
-<span style="align-self: flex-start; display: inline-flex; align-items: center; gap: 8px; background: rgba(43,196,230,0.16); color: #7FE0F5; border-radius: 999px; padding: 8px 16px; font-size: 14px; font-weight: 700;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7FE0F5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0;"><path d="M2 9c2.5 0 2.5-2 5-2s2.5 2 5 2 2.5-2 5-2 2.5 2 5 2M2 15c2.5 0 2.5-2 5-2s2.5 2 5 2 2.5-2 5-2 2.5 2 5 2"/></svg> Mohali’s finest indoor pool</span>
-<h1 style="margin: 0; font-size: 72px; line-height: 1.02; font-weight: 800; letter-spacing: -0.035em;">Luxury swimming, <span style="color: #2BC4E6; font-style: italic;">redefined.</span></h1>
-<p style="margin: 0; font-size: 18px; line-height: 1.6; color: rgba(255,255,255,0.82);">Step into Club72’s premium all-weather pool, where five-star comfort meets serious swimming. Swimming classes available in a family-friendly environment.</p>
-<div style="display: flex; gap: 12px;">
-<a href="#book" style="display: inline-flex; align-items: center; gap: 12px; height: 54px; padding: 0 26px; border-radius: 999px; background: #2BC4E6; color: #0A1A33; font-size: 16px; font-weight: 800;">Book your spot <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0A1A33" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0;"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-<a href="#packages" style="display: inline-flex; align-items: center; height: 54px; padding: 0 26px; border-radius: 999px; background: rgba(255,255,255,0.12); color: #ffffff; font-size: 16px; font-weight: 600;">See packages</a>
+<sc-if value="{{menuOpen}}" hint-placeholder-val="{{ false }}">
+<nav id="m-menu" aria-label="Mobile" class="fu" style="animation-duration: .35s; position: fixed; inset: 0; z-index: 60; background: #0B0B0C; color: #ffffff; box-sizing: border-box; padding: 24px clamp(20px, 5vw, 40px) calc(24px + env(safe-area-inset-bottom)); display: flex; flex-direction: column; gap: 6px; overflow-y: auto;">
+<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;"><a href="index.html" aria-label="Club72 Gym home" style="display: inline-flex; flex-direction: column; align-items: flex-end; line-height: 1;">
+<span style="font-style: italic; font-weight: 800; font-size: 24px; letter-spacing: -0.02em; color: #ffffff;">CLUB<span style="color: #EC2C3B;">72</span> GYM</span>
+<span style="font-size: 7px; font-weight: 700; letter-spacing: 0.14em; color: rgba(255,255,255,0.7); margin-top: 3px;">BY PROULTIMATE</span>
+</a><button type="button" onClick="{{toggleMenu}}" aria-label="Close menu" style="width: 48px; height: 48px; border-radius: 50%; border: 0; background: rgba(255,255,255,0.14); display: flex; align-items: center; justify-content: center;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0;"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<a href="index.html" onClick="{{closeMenu}}" style="display: flex; align-items: center; justify-content: space-between; min-height: 60px; border-bottom: 1px solid rgba(255,255,255,0.12); font-size: clamp(22px, 6vw, 30px); font-weight: 800; font-style: italic; text-transform: uppercase;">Home <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#EC2C3B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0;"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a href="services.html" onClick="{{closeMenu}}" style="display: flex; align-items: center; justify-content: space-between; min-height: 60px; border-bottom: 1px solid rgba(255,255,255,0.12); font-size: clamp(22px, 6vw, 30px); font-weight: 800; font-style: italic; text-transform: uppercase;">Services <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#EC2C3B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0;"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a href="pool.html" onClick="{{closeMenu}}" style="display: flex; align-items: center; justify-content: space-between; min-height: 60px; border-bottom: 1px solid rgba(255,255,255,0.12); font-size: clamp(22px, 6vw, 30px); font-weight: 800; font-style: italic; text-transform: uppercase;">Pool <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#EC2C3B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0;"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a href="mmaacademy.html" onClick="{{closeMenu}}" style="display: flex; align-items: center; justify-content: space-between; min-height: 60px; border-bottom: 1px solid rgba(255,255,255,0.12); font-size: clamp(22px, 6vw, 30px); font-weight: 800; font-style: italic; text-transform: uppercase;">MMA Academy <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#EC2C3B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0;"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a href="about.html" onClick="{{closeMenu}}" style="display: flex; align-items: center; justify-content: space-between; min-height: 60px; border-bottom: 1px solid rgba(255,255,255,0.12); font-size: clamp(22px, 6vw, 30px); font-weight: 800; font-style: italic; text-transform: uppercase;">About <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#EC2C3B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0;"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a href="contact.html" onClick="{{closeMenu}}" style="display: flex; align-items: center; justify-content: space-between; min-height: 60px; border-bottom: 1px solid rgba(255,255,255,0.12); font-size: clamp(22px, 6vw, 30px); font-weight: 800; font-style: italic; text-transform: uppercase;">Contact <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#EC2C3B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0;"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a href="membership.html" onClick="{{closeMenu}}" style="display: flex; align-items: center; justify-content: space-between; min-height: 60px; border-bottom: 1px solid rgba(255,255,255,0.12); font-size: clamp(22px, 6vw, 30px); font-weight: 800; font-style: italic; text-transform: uppercase;">Membership enquiry <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#EC2C3B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0;"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+<div style="margin-top: auto; padding-top: 24px; display: flex; flex-direction: column; gap: 10px;">
+<a href="tel:+918350007272" style="display: flex; align-items: center; justify-content: center; gap: 10px; height: 56px; border-radius: 999px; background: rgba(255,255,255,0.12); font-size: 16px; font-weight: 700;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0;"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg> +91 83500 07272</a>
+<a href="membership.html" style="display: flex; align-items: center; justify-content: center; height: 56px; border-radius: 999px; background: #D11F2E; font-size: 16px; font-weight: 800;">Enquire now</a>
 </div>
+</nav>
+</sc-if>
+<div class="split" style="position: relative; z-index: 2; align-items: center;">
+<div style="flex: 1 1 0; min-width: 0; display: flex; flex-direction: column; gap: 22px;">
+<div class="fu" style="animation-delay: .1s; display: flex; align-items: center; gap: 12px; font-size: clamp(12px, 1.1vw, 14px); font-weight: 700; letter-spacing: 0.14em; color: #7FE0F5; text-transform: uppercase;"><span style="width: 40px; height: 2px; background: #2BC4E6; flex-shrink: 0;"></span>Mohali’s finest indoor pool</div>
+<h1 class="h-xl h-fit" style="--n: 7.4; --mx: 112px; --fs: min(112px, calc((50.0vw - 72px) / 7.4));"><span class="ln"><span style="animation-delay: .2s;">Luxury</span></span><span class="ln"><span style="animation-delay: .3s;">swimming,</span></span><span class="ln"><span style="animation-delay: .4s; color: #2BC4E6;">redefined.</span></span></h1>
+<p class="lead fu" style="animation-delay: .6s; color: rgba(255,255,255,0.85); max-width: 560px;">Step into Club72’s premium all-weather pool, where five-star comfort meets serious swimming. Swimming classes in a family-friendly environment.</p>
+<div class="fu row-wrap" style="animation-delay: .75s; gap: 12px;">
+<a href="#book" style="display: inline-flex; align-items: center; gap: 12px; height: 56px; padding: 0 26px; border-radius: 999px; background: #2BC4E6; color: #0A1A33; font-size: 16px; font-weight: 800;">Book your spot <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0A1A33" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0;"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+<a href="#packages" style="display: inline-flex; align-items: center; height: 56px; padding: 0 26px; border-radius: 999px; border: 1.5px solid rgba(255,255,255,0.3); font-size: 16px; font-weight: 700;">See packages</a>
 </div>
-<div style="position: relative; flex-grow: 1; border-radius: 24px; overflow: hidden;">
-<img src="images/pool-lounge.jpg" alt="Club72 indoor pool surrounded by loungers and plants" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;">
-<div style="position: absolute; left: 20px; bottom: 20px; right: 20px; display: flex; gap: 12px;">
-<div style="background: rgba(10,26,51,0.88); border-radius: 18px; padding: 18px 20px; display: flex; flex-direction: column; gap: 8px;">
-<div style="display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 700; color: #7FE0F5;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7FE0F5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0;"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg> Pool hours</div>
-<div style="font-size: 22px; font-weight: 800;">Daily 7 AM – 9 PM</div>
+<div class="fu" style="animation-delay: .9s; font-size: 15px;"><div style="display: flex; align-items: center; gap: 10px; font-size: 14px; font-weight: 600;">
+<sc-if value="{{pool.open}}" hint-placeholder-val="{{ true }}"><span class="live" style="width: 10px; height: 10px; border-radius: 50%; background: #4ADE80; flex-shrink: 0;"></span></sc-if>
+<sc-if value="{{pool.closed}}" hint-placeholder-val="{{ false }}"><span style="width: 10px; height: 10px; border-radius: 50%; background: #8A8A90; flex-shrink: 0;"></span></sc-if>
+<span><b>{{pool.name}}</b> · {{pool.text}}</span>
+</div></div>
+</div>
+<div class="split-media" style="width: 46%; min-height: 520px;">
+<img class="kb" src="images/pool-lounge.jpg" alt="Club72 indoor pool surrounded by loungers and plants" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; animation: kb 24s ease-in-out infinite alternate;">
+<span aria-hidden="true" class="rip" style="position: absolute; left: 60%; top: 70%; width: 170px; height: 170px; border: 2px solid rgba(255,255,255,0.7); border-radius: 50%;"></span>
+<span aria-hidden="true" class="rip" style="position: absolute; left: 60%; top: 70%; width: 170px; height: 170px; border: 2px solid rgba(255,255,255,0.7); border-radius: 50%; animation-delay: 1.5s;"></span>
+<div style="position: absolute; left: 16px; right: 16px; bottom: 16px; background: rgba(10,26,51,0.9); border-radius: 18px; padding: 16px 18px; display: flex; flex-direction: column; gap: 6px;">
+<div style="font-size: 20px; font-weight: 800;">Daily 7 AM – 9 PM</div>
 <div style="font-size: 14px; color: rgba(255,255,255,0.85);">Closed Thursdays for cleaning · Under-8s not permitted</div>
-<div><span style="display: inline-flex; align-items: center; gap: 6px; border: 1.5px dashed rgba(255,255,255,0.45); color: rgba(255,255,255,0.8); border-radius: 999px; padding: 3px 10px; font-size: 12px; font-weight: 600; letter-spacing: 0.02em; white-space: nowrap;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.8)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0;"><path d="M5 21V4M5 4h11l-2 4 2 4H5"/></svg> Confirm: “365 days” copy vs Thursday closure</span></div>
+<div><span style="display: inline-flex; align-items: center; gap: 6px; border: 1.5px dashed rgba(255,255,255,0.45); color: rgba(255,255,255,0.8); border-radius: 999px; padding: 3px 10px; font-size: 12px; font-weight: 600; letter-spacing: 0.02em; line-height: 1.35; max-width: 100%; box-sizing: border-box;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.8)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0;"><path d="M5 21V4M5 4h11l-2 4 2 4H5"/></svg> Confirm: “365 days” copy vs Thursday closure</span></div>
 </div>
 </div>
 </div>
+<svg aria-hidden="true" width="2880" height="120" viewBox="0 0 2880 120" preserveAspectRatio="none" class="wv2" style="position: absolute; left: 0; bottom: 20px; opacity: 0.35;"><path d="M0 40 Q 90 0 180 40 T 360 40 T 540 40 T 720 40 T 900 40 T 1080 40 T 1260 40 T 1440 40 T 1620 40 T 1800 40 T 1980 40 T 2160 40 T 2340 40 T 2520 40 T 2700 40 T 2880 40 V 120 H 0 Z" fill="#2BC4E6"/></svg>
+<svg aria-hidden="true" width="2880" height="120" viewBox="0 0 2880 120" preserveAspectRatio="none" class="wv1" style="position: absolute; left: 0; bottom: -10px;"><path d="M0 40 Q 90 0 180 40 T 360 40 T 540 40 T 720 40 T 900 40 T 1080 40 T 1260 40 T 1440 40 T 1620 40 T 1800 40 T 1980 40 T 2160 40 T 2340 40 T 2520 40 T 2700 40 T 2880 40 V 120 H 0 Z" fill="#EAF8FC"/></svg>
+</section>
+<section aria-labelledby="am-h" class="px sec" style="background: #EAF8FC; color: #0A1A33;">
+<div class="split" style="align-items: stretch;">
+<div style="flex: 0 0 34%; min-width: 0; display: flex; flex-direction: column; gap: 20px;">
+<h2 id="am-h" class="h-l" style="color: #0A1A33;">Swim. Recover. Relax.</h2>
+<p class="lead" style="color: #2E4260;">Step into Mohali’s most luxurious swimming facility, with changing rooms and lockers for every member.</p>
+<div style="position: relative; height: clamp(220px, 24vw, 320px); border-radius: 22px; overflow: hidden; background: #1A1A1C; "><img src="images/swimming-pool.jpg" alt="Pool lanes under bright ceiling lights" loading="lazy" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;"></div>
+</div>
+<div class="g2" style="flex: 1 1 0; min-width: 0;"><div class="card-lift" style="background: #ffffff; border-radius: 22px; padding: 26px; display: flex; flex-direction: column; gap: 14px;"><span style="width: 52px; height: 52px; border-radius: 14px; background: #0A1A33; display: flex; align-items: center; justify-content: center;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2BC4E6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0;"><path d="M2 9c2.5 0 2.5-2 5-2s2.5 2 5 2 2.5-2 5-2 2.5 2 5 2M2 15c2.5 0 2.5-2 5-2s2.5 2 5 2 2.5-2 5-2 2.5 2 5 2"/></svg></span><h3 style="margin: 0; font-size: 21px; font-weight: 800; color: #0A1A33;">All-weather pool</h3><p style="margin: 0; font-size: 15px; line-height: 1.6; color: #2E4260;">Crystal-clear, temperature-controlled water for an uninterrupted routine.</p></div><div class="card-lift" style="background: #ffffff; border-radius: 22px; padding: 26px; display: flex; flex-direction: column; gap: 14px;"><span style="width: 52px; height: 52px; border-radius: 14px; background: #0A1A33; display: flex; align-items: center; justify-content: center;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2BC4E6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0;"><path d="M12 3l8 3v6c0 4.5-3.4 8-8 9-4.6-1-8-4.5-8-9V6z"/></svg></span><h3 style="margin: 0; font-size: 21px; font-weight: 800; color: #0A1A33;">Lifeguards on duty</h3><p style="margin: 0; font-size: 15px; line-height: 1.6; color: #2E4260;">Professional staff are present throughout operating hours to keep the water safe.</p><span style="display: inline-flex; align-items: center; gap: 6px; border: 1.5px dashed #9A9AA0; color: #5B5B61; border-radius: 999px; padding: 3px 10px; font-size: 12px; font-weight: 600; letter-spacing: 0.02em; line-height: 1.35; max-width: 100%; box-sizing: border-box;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#5B5B61" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0;"><path d="M5 21V4M5 4h11l-2 4 2 4H5"/></svg> Align with FAQ “own risk” wording</span></div><div class="card-lift" style="background: #ffffff; border-radius: 22px; padding: 26px; display: flex; flex-direction: column; gap: 14px;"><span style="width: 52px; height: 52px; border-radius: 14px; background: #0A1A33; display: flex; align-items: center; justify-content: center;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2BC4E6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0;"><circle cx="16" cy="6" r="2"/><path d="M4 13l5-4 3 3 3-2M2 18c2.5 0 2.5-2 5-2s2.5 2 5 2 2.5-2 5-2 2.5 2 5 2"/></svg></span><h3 style="margin: 0; font-size: 21px; font-weight: 800; color: #0A1A33;">Swimming lessons</h3><p style="margin: 0; font-size: 15px; line-height: 1.6; color: #2E4260;">Master the water with confidence. Dedicated coaching sessions for beginners.</p></div><div class="card-lift" style="background: #ffffff; border-radius: 22px; padding: 26px; display: flex; flex-direction: column; gap: 14px;"><span style="width: 52px; height: 52px; border-radius: 14px; background: #0A1A33; display: flex; align-items: center; justify-content: center;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2BC4E6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0;"><path d="M8 4c-1.5 2 1.5 3 0 5M12 4c-1.5 2 1.5 3 0 5M16 4c-1.5 2 1.5 3 0 5M4 14h16v3a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3z"/></svg></span><h3 style="margin: 0; font-size: 21px; font-weight: 800; color: #0A1A33;">Luxury recovery zones</h3><p style="margin: 0; font-size: 15px; line-height: 1.6; color: #2E4260;">Premium steam rooms, saunas and refreshing ice showers.</p></div></div>
 </div>
 </section>
-<section aria-labelledby="am-h" style="height: 560px; box-sizing: border-box; padding: 48px 24px 24px; display: flex; gap: 32px;">
-<div style="width: 420px; display: flex; flex-direction: column; gap: 22px;">
-<h2 id="am-h" style="margin: 0; font-size: 48px; line-height: 1.05; font-weight: 800; letter-spacing: -0.03em; color: #0A1A33;">Swim. Recover. Relax.</h2>
-<p style="margin: 0; font-size: 17px; line-height: 1.6; color: #2E4260;">Step into Mohali’s most luxurious swimming facility, with changing rooms and lockers for every member.</p>
-<div style="flex-grow: 1; border-radius: 22px; overflow: hidden;"><img src="images/swimming-pool.jpg" alt="Pool lanes under bright ceiling lights" style="width: 100%; height: 100%; object-fit: cover; display: block;"></div>
+<section id="packages" aria-labelledby="pk-h" class="px sec" style="background: #0A1A33;">
+<div class="row-wrap" style="justify-content: space-between; align-items: flex-end; gap: 20px; margin-bottom: clamp(28px, 3vw, 40px);">
+<div style="display: flex; flex-direction: column; gap: 14px;"><span style="font-size: 14px; font-weight: 800; letter-spacing: 0.14em; color: #7FE0F5;">POOL-ONLY MEMBERSHIP</span>
+<h2 id="pk-h" class="h-l">Choose your plan</h2>
+<p class="lead" style="color: rgba(255,255,255,0.82);">Unlimited access to the all-weather pool. Longer plans mean bigger savings.</p></div>
+<span style="display: inline-flex; align-items: center; gap: 6px; border: 1.5px dashed rgba(255,255,255,0.45); color: rgba(255,255,255,0.8); border-radius: 999px; padding: 3px 10px; font-size: 12px; font-weight: 600; letter-spacing: 0.02em; line-height: 1.35; max-width: 100%; box-sizing: border-box;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.8)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0;"><path d="M5 21V4M5 4h11l-2 4 2 4H5"/></svg> Prices to be confirmed with sales team</span>
 </div>
-<div style="flex-grow: 1; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: repeat(2, minmax(0, 1fr)); gap: 16px;"><div style="background: #EAF8FC; border-radius: 22px; padding: 26px; display: flex; flex-direction: column; gap: 14px;"><span style="width: 52px; height: 52px; border-radius: 14px; background: #0A1A33; display: flex; align-items: center; justify-content: center;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2BC4E6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0;"><path d="M2 9c2.5 0 2.5-2 5-2s2.5 2 5 2 2.5-2 5-2 2.5 2 5 2M2 15c2.5 0 2.5-2 5-2s2.5 2 5 2 2.5-2 5-2 2.5 2 5 2"/></svg></span><h3 style="margin: 0; font-size: 21px; font-weight: 800; color: #0A1A33;">All-weather pool</h3><p style="margin: 0; font-size: 15px; line-height: 1.6; color: #2E4260;">Crystal-clear, temperature-controlled water for an uninterrupted routine.</p></div><div style="background: #EAF8FC; border-radius: 22px; padding: 26px; display: flex; flex-direction: column; gap: 14px;"><span style="width: 52px; height: 52px; border-radius: 14px; background: #0A1A33; display: flex; align-items: center; justify-content: center;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2BC4E6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0;"><path d="M12 3l8 3v6c0 4.5-3.4 8-8 9-4.6-1-8-4.5-8-9V6z"/></svg></span><h3 style="margin: 0; font-size: 21px; font-weight: 800; color: #0A1A33;">Lifeguards on duty</h3><p style="margin: 0; font-size: 15px; line-height: 1.6; color: #2E4260;">Professional staff are present throughout operating hours to keep the water safe.</p><span style="display: inline-flex; align-items: center; gap: 6px; border: 1.5px dashed #9A9AA0; color: #5B5B61; border-radius: 999px; padding: 3px 10px; font-size: 12px; font-weight: 600; letter-spacing: 0.02em; white-space: nowrap;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#5B5B61" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0;"><path d="M5 21V4M5 4h11l-2 4 2 4H5"/></svg> Align with FAQ “own risk” wording</span></div><div style="background: #EAF8FC; border-radius: 22px; padding: 26px; display: flex; flex-direction: column; gap: 14px;"><span style="width: 52px; height: 52px; border-radius: 14px; background: #0A1A33; display: flex; align-items: center; justify-content: center;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2BC4E6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0;"><circle cx="16" cy="6" r="2"/><path d="M4 13l5-4 3 3 3-2M2 18c2.5 0 2.5-2 5-2s2.5 2 5 2 2.5-2 5-2 2.5 2 5 2"/></svg></span><h3 style="margin: 0; font-size: 21px; font-weight: 800; color: #0A1A33;">Swimming lessons</h3><p style="margin: 0; font-size: 15px; line-height: 1.6; color: #2E4260;">Master the water with confidence. Dedicated coaching sessions for beginners.</p></div><div style="background: #EAF8FC; border-radius: 22px; padding: 26px; display: flex; flex-direction: column; gap: 14px;"><span style="width: 52px; height: 52px; border-radius: 14px; background: #0A1A33; display: flex; align-items: center; justify-content: center;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2BC4E6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0;"><path d="M8 4c-1.5 2 1.5 3 0 5M12 4c-1.5 2 1.5 3 0 5M16 4c-1.5 2 1.5 3 0 5M4 14h16v3a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3z"/></svg></span><h3 style="margin: 0; font-size: 21px; font-weight: 800; color: #0A1A33;">Luxury recovery zones</h3><p style="margin: 0; font-size: 15px; line-height: 1.6; color: #2E4260;">Your swim continues with premium steam rooms, saunas and refreshing ice showers.</p></div></div>
-</section>
-<section id="packages" aria-labelledby="pk-h" style="height: 760px; box-sizing: border-box; border-radius: 28px; background: #0A1A33; color: #ffffff; padding: 56px; display: flex; flex-direction: column; gap: 32px;">
-<div style="display: flex; justify-content: space-between; align-items: flex-end;">
-<div style="display: flex; flex-direction: column; gap: 14px;"><span style="font-size: 14px; font-weight: 700; letter-spacing: 0.12em; color: #7FE0F5;">POOL-ONLY MEMBERSHIP</span>
-<h2 id="pk-h" style="margin: 0; font-size: 48px; font-weight: 800; letter-spacing: -0.03em;">Choose your plan</h2>
-<p style="margin: 0; font-size: 17px; color: rgba(255,255,255,0.8);">Unlimited access to the all-weather pool. Longer plans mean bigger savings.</p></div>
-<span style="display: inline-flex; align-items: center; gap: 6px; border: 1.5px dashed rgba(255,255,255,0.45); color: rgba(255,255,255,0.8); border-radius: 999px; padding: 3px 10px; font-size: 12px; font-weight: 600; letter-spacing: 0.02em; white-space: nowrap;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.8)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0;"><path d="M5 21V4M5 4h11l-2 4 2 4H5"/></svg> Prices to be confirmed with sales team</span>
-</div>
-<div style="display: grid; grid-template-columns: 1fr 1fr 1.1fr; gap: 20px; flex-grow: 1;">
-<div style="background: #12284A; border-radius: 24px; padding: 32px; display: flex; flex-direction: column; gap: 20px;">
+<div class="g3" style="gap: 20px;">
+<div class="card-lift" style="background: #12284A; border-radius: 24px; padding: clamp(24px, 3vw, 32px); display: flex; flex-direction: column; gap: 20px;">
 <div style="font-size: 18px; font-weight: 700;">Monthly</div>
-<div><span style="font-size: 56px; font-weight: 800; letter-spacing: -0.03em;">₹10,000</span><span style="font-size: 17px; color: #9FB3CF; font-weight: 600;"> /month</span></div>
+<div><span style="font-size: clamp(44px, 4vw, 56px); font-weight: 800; letter-spacing: -0.03em;">₹10,000</span><span style="font-size: 17px; color: #9FB3CF; font-weight: 600;"> /month</span></div>
 <ul style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 12px; font-size: 16px;"><li style="display: flex; align-items: center; gap: 10px;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2BC4E6" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0;"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg> Unlimited swimming</li><li style="display: flex; align-items: center; gap: 10px;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2BC4E6" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0;"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg> Flexible timing</li><li style="display: flex; align-items: center; gap: 10px;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2BC4E6" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0;"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg> Shower &amp; changing rooms</li><li style="display: flex; align-items: center; gap: 10px;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2BC4E6" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0;"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg> Locker facility</li></ul>
 <a href="tel:+918350007272" style="margin-top: auto; display: flex; align-items: center; justify-content: center; height: 54px; border-radius: 999px; border: 1.5px solid #ffffff; font-size: 16px; font-weight: 700;">Call to join</a>
 </div>
-<div style="background: #ffffff; color: #0A1A33; border-radius: 24px; padding: 32px; display: flex; flex-direction: column; gap: 20px; position: relative;">
-<span style="position: absolute; top: 28px; right: 28px; background: #2BC4E6; color: #0A1A33; border-radius: 999px; padding: 6px 14px; font-size: 13px; font-weight: 800;">Save ₹6,000</span>
+<div class="card-lift" style="background: #ffffff; color: #0A1A33; border-radius: 24px; padding: clamp(24px, 3vw, 32px); display: flex; flex-direction: column; gap: 20px; position: relative;">
+<span style="position: absolute; top: 24px; right: 24px; background: #2BC4E6; color: #0A1A33; border-radius: 999px; padding: 6px 14px; font-size: 13px; font-weight: 800;">Save ₹6,000</span>
 <div style="font-size: 18px; font-weight: 700;">3 months</div>
-<div><span style="font-size: 56px; font-weight: 800; letter-spacing: -0.03em;">₹24,000</span><span style="font-size: 17px; color: #4A5B75; font-weight: 600;"> /quarter</span><div style="font-size: 15px; color: #4A5B75; margin-top: 4px;"><s>₹30,000</s></div></div>
+<div><span style="font-size: clamp(44px, 4vw, 56px); font-weight: 800; letter-spacing: -0.03em;">₹24,000</span><span style="font-size: 17px; color: #4A5B75; font-weight: 600;"> /quarter</span><div style="font-size: 15px; color: #4A5B75; margin-top: 4px;"><s>₹30,000</s></div></div>
 <ul style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 12px; font-size: 16px;"><li style="display: flex; align-items: center; gap: 10px;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0A1A33" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0;"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg> Unlimited swimming</li><li style="display: flex; align-items: center; gap: 10px;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0A1A33" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0;"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg> Flexible timing</li><li style="display: flex; align-items: center; gap: 10px;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0A1A33" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0;"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg> Shower &amp; changing rooms</li><li style="display: flex; align-items: center; gap: 10px;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0A1A33" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0;"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg> Locker facility</li></ul>
 <a href="tel:+918350007272" style="margin-top: auto; display: flex; align-items: center; justify-content: center; height: 54px; border-radius: 999px; background: #0A1A33; color: #ffffff; font-size: 16px; font-weight: 700;">Call to join</a>
 </div>
-<div style="background: #2BC4E6; color: #0A1A33; border-radius: 24px; padding: 32px; display: flex; flex-direction: column; gap: 18px;">
+<div class="card-lift" style="background: #2BC4E6; color: #0A1A33; border-radius: 24px; padding: clamp(24px, 3vw, 32px); display: flex; flex-direction: column; gap: 18px;">
 <div style="font-size: 18px; font-weight: 700;">Family offer</div>
-<div style="font-size: 64px; font-weight: 800; letter-spacing: -0.04em; line-height: 1;">Save 50%</div>
+<div style="font-size: clamp(48px, 5vw, 64px); font-weight: 800; font-style: italic; letter-spacing: -0.04em; line-height: 1; text-transform: uppercase;">Save 50%</div>
 <p style="margin: 0; font-size: 17px; line-height: 1.55; font-weight: 500;">Choose a family membership plan and pay half on pool services.</p>
-<div><span style="display: inline-flex; align-items: center; gap: 6px; border: 1.5px dashed #9A9AA0; color: #5B5B61; border-radius: 999px; padding: 3px 10px; font-size: 12px; font-weight: 600; letter-spacing: 0.02em; white-space: nowrap;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#5B5B61" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0;"><path d="M5 21V4M5 4h11l-2 4 2 4H5"/></svg> Eligibility, validity &amp; taxes</span></div>
-<a href="membership.html" style="margin-top: auto; display: flex; align-items: center; justify-content: center; gap: 10px; height: 54px; border-radius: 999px; background: #0A1A33; color: #ffffff; font-size: 16px; font-weight: 700;">Ask about family plans <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0;"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+<div><span style="display: inline-flex; align-items: center; gap: 6px; border: 1.5px dashed #9A9AA0; color: #5B5B61; border-radius: 999px; padding: 3px 10px; font-size: 12px; font-weight: 600; letter-spacing: 0.02em; line-height: 1.35; max-width: 100%; box-sizing: border-box;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#5B5B61" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0;"><path d="M5 21V4M5 4h11l-2 4 2 4H5"/></svg> Eligibility, validity &amp; taxes</span></div>
+<a href="membership.html" style="margin-top: auto; display: flex; align-items: center; justify-content: center; gap: 10px; height: 54px; border-radius: 999px; background: #0A1A33; color: #ffffff; font-size: 16px; font-weight: 700;">Ask about family plans</a>
 </div>
 </div>
 </section>
-<section id="book" aria-labelledby="bk-h" style="height: 560px; box-sizing: border-box; padding: 48px 24px 24px; display: flex; gap: 48px;">
-<div style="width: 520px; display: flex; flex-direction: column; gap: 20px;">
-<span style="font-size: 14px; font-weight: 700; letter-spacing: 0.12em; color: #0E6F87;">READY TO DIVE IN?</span>
-<h2 id="bk-h" style="margin: 0; font-size: 48px; line-height: 1.05; font-weight: 800; letter-spacing: -0.03em; color: #0A1A33;">Reserve your spot.</h2>
-<p style="margin: 0; font-size: 17px; line-height: 1.6; color: #2E4260;">Fill in the form and our pool team will get in touch to confirm your slot.</p>
-<div style="display: flex; flex-direction: column; gap: 12px; margin-top: 8px; font-size: 16px; font-weight: 600; color: #0A1A33;">
-<a href="tel:+918350007272" style="display: flex; align-items: center; gap: 10px;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0E6F87" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0;"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg> +91 83500 07272</a>
-<a href="https://wa.me/919646909912" style="display: flex; align-items: center; gap: 10px;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0E6F87" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0;"><path d="M4 20l1.3-4A8 8 0 1 1 8 18.7z"/><path d="M9 9.5c.3 2.2 2.3 4.2 4.5 4.5l1-1.2 2 .8c-.3 1.3-1.3 2-2.5 1.9A7 7 0 0 1 8.5 10c0-1.2.6-2.2 1.9-2.5l.8 2z"/></svg> WhatsApp pool enquiries <span style="display: inline-flex; align-items: center; gap: 6px; border: 1.5px dashed #9A9AA0; color: #5B5B61; border-radius: 999px; padding: 3px 10px; font-size: 12px; font-weight: 600; letter-spacing: 0.02em; white-space: nowrap;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#5B5B61" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0;"><path d="M5 21V4M5 4h11l-2 4 2 4H5"/></svg> Confirm number</span></a>
+<section id="book" aria-labelledby="bk-h" class="px sec" style="background: #EAF8FC; color: #0A1A33;">
+<div class="split">
+<div style="flex: 0 0 36%; min-width: 0; display: flex; flex-direction: column; gap: 18px;">
+<span style="font-size: 14px; font-weight: 800; letter-spacing: 0.14em; color: #0E6F87;">READY TO DIVE IN?</span>
+<h2 id="bk-h" class="h-l" style="color: #0A1A33;">Reserve your spot.</h2>
+<p class="lead" style="color: #2E4260;">Fill in the form and our pool team will get in touch to confirm your slot.</p>
+<div style="display: flex; flex-direction: column; gap: 12px; font-size: 16px; font-weight: 700;">
+<a href="tel:+918350007272" style="display: flex; align-items: center; gap: 10px; min-height: 44px;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0E6F87" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0;"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg> +91 83500 07272</a>
+<a href="https://wa.me/919646909912" class="row-wrap" style="align-items: center; gap: 10px; min-height: 44px;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0E6F87" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0;"><path d="M4 20l1.3-4A8 8 0 1 1 8 18.7z"/><path d="M9 9.5c.3 2.2 2.3 4.2 4.5 4.5l1-1.2 2 .8c-.3 1.3-1.3 2-2.5 1.9A7 7 0 0 1 8.5 10c0-1.2.6-2.2 1.9-2.5l.8 2z"/></svg> WhatsApp pool enquiries <span style="display: inline-flex; align-items: center; gap: 6px; border: 1.5px dashed #9A9AA0; color: #5B5B61; border-radius: 999px; padding: 3px 10px; font-size: 12px; font-weight: 600; letter-spacing: 0.02em; line-height: 1.35; max-width: 100%; box-sizing: border-box;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#5B5B61" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0;"><path d="M5 21V4M5 4h11l-2 4 2 4H5"/></svg> Confirm number</span></a>
 </div>
 </div>
-<form onSubmit="{{submit}}" novalidate style="margin: 0; flex-grow: 1; background: #EAF8FC; border-radius: 28px; padding: 40px; display: flex; flex-direction: column; gap: 8px;">
+<form onSubmit="{{submit}}" novalidate class="formcard" style="margin: 0; flex: 1 1 0; min-width: 0; display: flex; flex-direction: column; gap: 8px;">
 <sc-if value="{{showForm}}" hint-placeholder-val="{{ true }}">
-<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px;">
-<div>
+<div class="f2"><div>
 <label for="pb-name" style="display: block; font-size: 14px; font-weight: 700; margin-bottom: 8px;">Your name *</label>
 <input id="pb-name" type="text" autocomplete="name" value="{{name}}" onChange="{{on_name}}" aria-invalid="{{nameErr}}" aria-describedby="pb-name-err" style="height: 52px; box-sizing: border-box; border: 1.5px solid #CFCFCB; border-radius: 12px; padding: 0 16px; font-size: 16px; background: #ffffff; color: #0E0E0F; width: 100%;">
 <div id="pb-name-err" style="font-size: 13px; font-weight: 600; color: #B3121F; min-height: 18px; margin-top: 6px;">{{nameMsg}}</div>
-</div>
-<div>
+</div><div>
 <label for="pb-phone" style="display: block; font-size: 14px; font-weight: 700; margin-bottom: 8px;">Phone number *</label>
 <div style="display: flex; gap: 8px;">
 <label for="pb-cc" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap;">Country code</label>
@@ -130,73 +284,72 @@ button{cursor:pointer}
 <input id="pb-phone" type="tel" inputmode="numeric" autocomplete="tel-national" value="{{phone}}" onChange="{{onPhone}}" aria-invalid="{{phoneErr}}" aria-describedby="pb-phone-err" style="height: 52px; box-sizing: border-box; border: 1.5px solid #CFCFCB; border-radius: 12px; padding: 0 16px; font-size: 16px; background: #ffffff; color: #0E0E0F; width: 100%; flex-grow: 1; min-width: 0;">
 </div>
 <div id="pb-phone-err" style="font-size: 13px; font-weight: 600; color: #B3121F; min-height: 18px; margin-top: 6px;">{{phoneMsg}}</div>
-</div>
-</div>
-<fieldset style="border: 0; padding: 0; margin: 0 0 18px;">
-<legend style="display: block; font-size: 14px; font-weight: 700; margin-bottom: 8px; padding: 0;">Preferred time</legend>
-<div style="display: flex; gap: 10px; margin-top: 4px;"><sc-for list="{{times}}" as="t" hint-placeholder-count="3">
+</div></div>
+<fieldset style="border: 0; padding: 0; margin: 0 0 18px;"><legend style="display: block; font-size: 14px; font-weight: 700; margin-bottom: 8px; padding: 0;">Preferred time</legend><div class="row-wrap" style="gap: 10px; margin-top: 4px;"><sc-for list="{{times}}" as="t" hint-placeholder-count="3">
 <sc-if value="{{t.on}}" hint-placeholder-val="{{ false }}"><button type="button" aria-pressed="true" onClick="{{t.pick}}" style="height: 46px; padding: 0 20px; border-radius: 999px; border: 1.5px solid #0A1A33; background: #0A1A33; color: #ffffff; font-size: 15px; font-weight: 700; display: inline-flex; align-items: center; gap: 8px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0;"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>{{t.label}}</button></sc-if>
 <sc-if value="{{t.off}}" hint-placeholder-val="{{ true }}"><button type="button" aria-pressed="false" onClick="{{t.pick}}" style="height: 46px; padding: 0 20px; border-radius: 999px; border: 1.5px solid #8FA6C2; background: transparent; color: #0A1A33; font-size: 15px; font-weight: 600;">{{t.label}}</button></sc-if>
-</sc-for></div>
-</fieldset>
-<div style="display: flex; align-items: center; gap: 16px;">
+</sc-for></div></fieldset>
+<div class="row-wrap" style="align-items: center; gap: 14px;">
 <button type="submit" style="height: 56px; border: 0; border-radius: 999px; padding: 0 32px; background: #0A1A33; color: #ffffff; font-size: 17px; font-weight: 800;">Book now</button>
 <span style="font-size: 14px; color: #2E4260;">We’ll only use your details to contact you about your booking.</span>
 </div>
 </sc-if>
 <sc-if value="{{done}}" hint-placeholder-val="{{ false }}">
-<div role="status" style="flex-grow: 1; display: flex; flex-direction: column; align-items: flex-start; justify-content: center; gap: 16px; color: #0A1A33;">
+<div role="status" class="fu" style="display: flex; flex-direction: column; align-items: flex-start; gap: 14px; padding: 12px 0;">
 <span style="width: 64px; height: 64px; border-radius: 50%; background: #0A1A33; display: flex; align-items: center; justify-content: center;"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#2BC4E6" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0;"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>
-<h3 style="margin: 0; font-size: 32px; font-weight: 800;">Request received, {{firstName}}.</h3>
+<h3 style="margin: 0; font-size: clamp(24px, 2.4vw, 32px); font-weight: 800;">Request received, {{firstName}}.</h3>
 <p style="margin: 0; font-size: 17px; line-height: 1.6; color: #2E4260;">Our pool team will call you to confirm a {{timeLabel}} slot. Remember: the pool is closed on Thursdays.</p>
 <button type="button" onClick="{{reset}}" style="height: 48px; border: 1.5px solid #0A1A33; background: transparent; border-radius: 999px; padding: 0 22px; font-size: 15px; font-weight: 700; color: #0A1A33;">Book another spot</button>
 </div>
 </sc-if>
 </form>
-</section>
-<section aria-labelledby="faq-h" style="height: 760px; box-sizing: border-box; padding: 48px 24px 24px; display: flex; gap: 64px;">
-<div style="width: 420px; display: flex; flex-direction: column; gap: 18px;">
-<span style="font-size: 14px; font-weight: 700; letter-spacing: 0.12em; color: #0E6F87;">POOL GUIDELINES</span>
-<h2 id="faq-h" style="margin: 0; font-size: 48px; line-height: 1.05; font-weight: 800; letter-spacing: -0.03em; color: #0A1A33;">Everything you need to know.</h2>
-<p style="margin: 0; font-size: 17px; line-height: 1.6; color: #2E4260;">We maintain strict hygiene, safety and operational standards so every member enjoys a premium experience. Review these before your first session.</p>
 </div>
-<div style="flex-grow: 1; display: flex; flex-direction: column; border-top: 1.5px solid #CFE3EC;">
+</section>
+<section aria-labelledby="faq-h" class="px sec" style="background: #ffffff; color: #0A1A33;">
+<div class="split">
+<div style="flex: 0 0 34%; min-width: 0; display: flex; flex-direction: column; gap: 16px;">
+<span style="font-size: 14px; font-weight: 800; letter-spacing: 0.14em; color: #0E6F87;">POOL GUIDELINES</span>
+<h2 id="faq-h" class="h-l" style="color: #0A1A33;">Everything you need to know.</h2>
+<p class="lead" style="color: #2E4260;">Strict hygiene, safety and operational standards so every member enjoys a premium experience.</p>
+</div>
+<div style="flex: 1 1 0; min-width: 0; display: flex; flex-direction: column; border-top: 1.5px solid #CFE3EC;">
 <sc-for list="{{faqs}}" as="f" hint-placeholder-count="5">
 <div style="border-bottom: 1.5px solid #CFE3EC;">
-<h3 style="margin: 0;"><button type="button" onClick="{{f.toggle}}" aria-expanded="{{f.open}}" aria-controls="{{f.id}}" style="width: 100%; min-height: 76px; display: flex; align-items: center; gap: 20px; border: 0; background: transparent; padding: 18px 0; text-align: left; color: #0A1A33;">
-<span style="font-size: 15px; font-weight: 700; color: #0E6F87; width: 32px;">{{f.num}}</span>
-<span style="flex-grow: 1; font-size: 20px; font-weight: 700;">{{f.q}}</span>
-<sc-if value="{{f.open}}" hint-placeholder-val="{{ false }}"><span style="width: 40px; height: 40px; border-radius: 50%; background: #0A1A33; display: flex; align-items: center; justify-content: center;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0;"><path d="M5 12h14"/></svg></span></sc-if>
-<sc-if value="{{f.closed}}" hint-placeholder-val="{{ true }}"><span style="width: 40px; height: 40px; border-radius: 50%; border: 1.5px solid #0A1A33; box-sizing: border-box; display: flex; align-items: center; justify-content: center;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0A1A33" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0;"><path d="M12 5v14M5 12h14"/></svg></span></sc-if>
+<h3 style="margin: 0;"><button type="button" onClick="{{f.toggle}}" aria-expanded="{{f.open}}" aria-controls="{{f.id}}" style="width: 100%; min-height: 72px; display: flex; align-items: center; gap: 16px; border: 0; background: transparent; padding: 16px 0; text-align: left; color: #0A1A33;">
+<span style="font-size: 15px; font-weight: 800; color: #0E6F87; width: 30px; flex-shrink: 0;">{{f.num}}</span>
+<span style="flex-grow: 1; font-size: clamp(17px, 1.5vw, 20px); font-weight: 700;">{{f.q}}</span>
+<sc-if value="{{f.open}}" hint-placeholder-val="{{ false }}"><span style="width: 40px; height: 40px; flex-shrink: 0; border-radius: 50%; background: #0A1A33; display: flex; align-items: center; justify-content: center;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0;"><path d="M5 12h14"/></svg></span></sc-if>
+<sc-if value="{{f.closed}}" hint-placeholder-val="{{ true }}"><span style="width: 40px; height: 40px; flex-shrink: 0; border-radius: 50%; border: 1.5px solid #0A1A33; box-sizing: border-box; display: flex; align-items: center; justify-content: center;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0A1A33" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0;"><path d="M12 5v14M5 12h14"/></svg></span></sc-if>
 </button></h3>
-<sc-if value="{{f.open}}" hint-placeholder-val="{{ false }}"><p id="{{f.id}}" style="margin: 0; padding: 0 60px 24px 52px; font-size: 16px; line-height: 1.65; color: #2E4260;">{{f.a}}</p></sc-if>
+<sc-if value="{{f.open}}" hint-placeholder-val="{{ false }}"><p id="{{f.id}}" class="fu" style="animation-duration: .4s; margin: 0; padding: 0 8px 22px 46px; font-size: 16px; line-height: 1.65; color: #2E4260;">{{f.a}}</p></sc-if>
 </div>
 </sc-for>
 </div>
-</section>
-<footer style="height: 440px; box-sizing: border-box; border-radius: 28px; background: #0E0E0F; color: #ffffff; padding: 56px 56px 32px; display: flex; flex-direction: column; justify-content: space-between;">
-<div style="display: grid; grid-template-columns: 1.4fr 1fr 1.3fr 1.1fr; gap: 48px;">
-<div style="display: flex; flex-direction: column; gap: 20px;"><a href="index.html" aria-label="Club72 Gym home" style="display: inline-flex; flex-direction: column; align-items: flex-end; line-height: 1;">
-<span style="font-style: italic; font-weight: 800; font-size: 28px; letter-spacing: -0.02em; color: #ffffff;">CLUB<span style="color: #EC2C3B;">72</span> GYM</span>
-<span style="font-size: 8px; font-weight: 700; letter-spacing: 0.14em; color: rgba(255,255,255,0.7); margin-top: 3px;">BY PROULTIMATE</span>
-</a>
-<p style="margin: 0; font-size: 15px; line-height: 1.6; color: rgba(255,255,255,0.75); max-width: 320px;">Club 72 unites fitness and recreation across 1 lakh sq. ft.: advanced gym equipment, personal training, MMA, physiotherapy, dance studio, kids gym, swimming pool, health cafe and sports facilities.</p>
-<div style="display: flex; gap: 10px;">
-<a href="https://www.instagram.com/club_72gym/" aria-label="Club72 on Instagram" style="width: 44px; height: 44px; border-radius: 50%; background: #2A2A2E; display: flex; align-items: center; justify-content: center;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0;"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1" fill="currentColor"/></svg></a>
-<a href="https://www.facebook.com/club72gym" aria-label="Club72 on Facebook" style="width: 44px; height: 44px; border-radius: 50%; background: #2A2A2E; display: flex; align-items: center; justify-content: center;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0;"><path d="M14 8h3V4h-3a4 4 0 0 0-4 4v3H7v4h3v6h4v-6h3l1-4h-4V8z"/></svg></a>
-<a href="https://wa.me/919646909912" aria-label="Pool enquiries on WhatsApp" style="width: 44px; height: 44px; border-radius: 50%; background: #2A2A2E; display: flex; align-items: center; justify-content: center;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0;"><path d="M4 20l1.3-4A8 8 0 1 1 8 18.7z"/><path d="M9 9.5c.3 2.2 2.3 4.2 4.5 4.5l1-1.2 2 .8c-.3 1.3-1.3 2-2.5 1.9A7 7 0 0 1 8.5 10c0-1.2.6-2.2 1.9-2.5l.8 2z"/></svg></a>
-</div></div>
-<div style="display: flex; flex-direction: column; gap: 14px;"><h2 style="margin: 0; font-size: 13px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.6);">Explore</h2><a href="services.html" style="font-size: 15px; color: #ffffff;">Services</a><a href="pool.html" style="font-size: 15px; color: #ffffff;">Swimming Pool</a><a href="mmaacademy.html" style="font-size: 15px; color: #ffffff;">MMA Academy</a><a href="membership.html" style="font-size: 15px; color: #ffffff;">Memberships</a><a href="services.html" style="font-size: 15px; color: #ffffff;">Kids Gym</a><a href="about.html" style="font-size: 15px; color: #ffffff;">About</a><a href="#" style="font-size: 15px; color: #ffffff;">Blog</a></div><div style="display: flex; flex-direction: column; gap: 14px;"><h2 style="margin: 0; font-size: 13px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.6);">Visit &amp; call</h2><a href="https://maps.app.goo.gl/EDU7fyJcxk326JXb6" style="display: flex; gap: 10px; font-size: 15px; line-height: 1.5; color: #ffffff;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#EC2C3B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0;"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg><span>Plot No. A 33, Phase-8, Industrial Area,<br>Sector 72, SAS Nagar (Mohali),<br>Punjab 160071</span></a>
-<a href="tel:+918350007272" style="display: flex; gap: 10px; align-items: center; font-size: 15px; color: #ffffff;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#EC2C3B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0;"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg> +91 83500 07272</a>
-<a href="tel:+917087418600" style="display: flex; gap: 10px; align-items: center; font-size: 15px; color: #ffffff;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#EC2C3B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0;"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg> +91 70874 18600</a>
-<a href="mailto:sales@club72gym.com" style="display: flex; gap: 10px; align-items: center; font-size: 15px; color: #ffffff;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#EC2C3B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0;"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg> sales@club72gym.com</a></div><div style="display: flex; flex-direction: column; gap: 14px;"><h2 style="margin: 0; font-size: 13px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.6);">Hours</h2><div style="display: flex; flex-direction: column; gap: 4px; font-size: 15px; line-height: 1.5;"><span style="font-weight: 700;">Gym</span><span>Mon–Sat: 6:00 AM – 11:30 PM</span><span>Sun: 12:00 PM – 9:00 PM</span></div>
-<div style="display: flex; flex-direction: column; gap: 4px; font-size: 15px; line-height: 1.5;"><span style="font-weight: 700;">Swimming pool</span><span>Daily 7:00 AM – 9:00 PM</span><span>Closed Thursdays</span></div></div>
 </div>
-<div style="display: flex; justify-content: space-between; align-items: center; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.14); font-size: 14px; color: rgba(255,255,255,0.65);">
-<span>India’s biggest gym. Built for all. © Club 72 Gym 2026</span>
+</section>
+<footer class="px" style="padding-top: clamp(48px, 5vw, 64px); padding-bottom: 28px; display: flex; flex-direction: column; gap: clamp(32px, 4vw, 48px); background: #0B0B0C; color: #ffffff; overflow: hidden;">
+<div class="row-wrap" style="justify-content: space-between; align-items: flex-start; gap: 32px;">
+<nav aria-label="Footer" class="foot-nav"><a href="index.html" style="font-size: 15px; font-weight: 600; min-height: 32px; display: inline-flex; align-items: center;">Home</a><a href="services.html" style="font-size: 15px; font-weight: 600; min-height: 32px; display: inline-flex; align-items: center;">Services</a><a href="pool.html" style="font-size: 15px; font-weight: 600; min-height: 32px; display: inline-flex; align-items: center;">Pool</a><a href="mmaacademy.html" style="font-size: 15px; font-weight: 600; min-height: 32px; display: inline-flex; align-items: center;">MMA Academy</a><a href="about.html" style="font-size: 15px; font-weight: 600; min-height: 32px; display: inline-flex; align-items: center;">About</a><a href="contact.html" style="font-size: 15px; font-weight: 600; min-height: 32px; display: inline-flex; align-items: center;">Contact</a><a href="membership.html" style="font-size: 15px; font-weight: 600; min-height: 32px; display: inline-flex; align-items: center;">Memberships</a><a href="#" style="font-size: 15px; font-weight: 600; min-height: 32px; display: inline-flex; align-items: center;">Blog</a></nav>
+<div style="display: flex; flex-direction: column; gap: 8px; font-size: 15px; line-height: 1.5;">
+<a href="https://maps.app.goo.gl/EDU7fyJcxk326JXb6" style="max-width: 280px;">Plot No. A 33, Phase-8, Industrial Area, Sector 72, SAS Nagar, Punjab 160071</a>
+<a href="tel:+918350007272">+91 83500 07272</a><a href="tel:+917087418600">+91 70874 18600</a><a href="mailto:sales@club72gym.com">sales@club72gym.com</a>
+</div>
+<div style="display: flex; gap: 10px;">
+<a href="https://www.instagram.com/club_72gym/" aria-label="Club72 on Instagram" class="chip" style="width: 48px; height: 48px; border-radius: 50%; border: 1.5px solid rgba(255,255,255,0.25); display: flex; align-items: center; justify-content: center;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0;"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1" fill="currentColor"/></svg></a>
+<a href="https://www.facebook.com/club72gym" aria-label="Club72 on Facebook" class="chip" style="width: 48px; height: 48px; border-radius: 50%; border: 1.5px solid rgba(255,255,255,0.25); display: flex; align-items: center; justify-content: center;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0;"><path d="M14 8h3V4h-3a4 4 0 0 0-4 4v3H7v4h3v6h4v-6h3l1-4h-4V8z"/></svg></a>
+<a href="https://wa.me/919646909912" aria-label="Pool enquiries on WhatsApp" class="chip" style="width: 48px; height: 48px; border-radius: 50%; border: 1.5px solid rgba(255,255,255,0.25); display: flex; align-items: center; justify-content: center;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0;"><path d="M4 20l1.3-4A8 8 0 1 1 8 18.7z"/><path d="M9 9.5c.3 2.2 2.3 4.2 4.5 4.5l1-1.2 2 .8c-.3 1.3-1.3 2-2.5 1.9A7 7 0 0 1 8.5 10c0-1.2.6-2.2 1.9-2.5l.8 2z"/></svg></a>
+</div>
+</div>
+<div aria-hidden="true" style="font-size: clamp(88px, 20vw, 290px); line-height: 0.8; font-weight: 800; font-style: italic; letter-spacing: -0.06em; white-space: nowrap;"><span class="outline">CLUB</span><span style="color: #EC2C3B;">72</span></div>
+<div class="row-wrap" style="justify-content: space-between; gap: 12px; font-size: 14px; color: rgba(255,255,255,0.62); padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.12);">
+<span>India’s biggest gym. Built for all. © Club 72 Gym by Pro Ultimate, 2026</span>
 <span style="display: flex; gap: 24px;"><a href="#">Gym policies</a><a href="#">Privacy policy</a></span>
 </div>
 </footer>
+<div class="mbar">
+<a href="tel:+918350007272" style="display: flex; align-items: center; justify-content: center; gap: 8px; height: 50px; border-radius: 999px; background: rgba(255,255,255,0.14); color: #ffffff; font-size: 15px; font-weight: 700;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0;"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg> Call</a>
+<a href="membership.html" style="display: flex; align-items: center; justify-content: center; height: 50px; border-radius: 999px; background: #D11F2E; color: #ffffff; font-size: 15px; font-weight: 800;">Enquire now</a>
+</div>
 </div>
 </template>
 <div id="app"></div>
@@ -204,9 +357,21 @@ button{cursor:pointer}
 <script src="assets/dc-lite.js"></script>
 <script>
 class Component extends DCLogic {
+  poolStatus() {
+    var d = new Date(), ist = new Date(d.getTime() + d.getTimezoneOffset() * 60000 + 330 * 60000);
+    var day = ist.getDay(), mins = ist.getHours() * 60 + ist.getMinutes();
+    function fmt(m) { var h = Math.floor(m / 60), mm = m % 60, ap = h >= 12 ? 'PM' : 'AM'; h = h % 12 || 12; return h + (mm ? ':' + (mm < 10 ? '0' : '') + mm : '') + ' ' + ap; }
+    function hrs(dd) { return dd === 4 ? null : [420, 1260]; }
+    var h = hrs(day);
+    if (h && mins >= h[0] && mins < h[1]) return { name: 'Pool', open: true, closed: false, text: 'Open now until ' + fmt(h[1]) };
+    if (h && mins < h[0]) return { name: 'Pool', open: false, closed: true, text: 'Opens today at ' + fmt(h[0]) };
+    var nd = (day + 1) % 7; if (!hrs(nd)) nd = (nd + 1) % 7;
+    return { name: 'Pool', open: false, closed: true, text: (nd === (day + 1) % 7 ? 'Opens tomorrow at ' : 'Opens ' + ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'][nd] + ' at ') + fmt(420) + (day === 4 ? ' (closed Thursdays)' : '') };
+  }
+
   constructor(props) {
     super(props);
-    this.state = { name: '', cc: '+91', phone: '', time: 'Morning', nameMsg: '', phoneMsg: '', done: false, open: 0 };
+    this.state = { menu: false, name: '', cc: '+91', phone: '', time: 'Morning', nameMsg: '', phoneMsg: '', done: false, open: 0 };
   }
   renderVals() {
     var self = this, st = this.state;
@@ -222,6 +387,8 @@ function emailOk(v) { return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test((v || '').trim
       ['Can I bring guests or outside food?', 'The pool is reserved for Club 72 Gym members and authorised guests. Glassware, breakable containers and pets are not allowed in the pool area. Enjoy post-swim meals and drinks at the on-site Health Cafe.']
     ];
     return {
+      menuOpen: this.state.menu, toggleMenu: () => this.setState({ menu: !this.state.menu }), closeMenu: () => this.setState({ menu: false }),
+      pool: this.poolStatus(),
       name: st.name, cc: st.cc, phone: st.phone,
       nameMsg: st.nameMsg, phoneMsg: st.phoneMsg, nameErr: !!st.nameMsg, phoneErr: !!st.phoneMsg,
       done: st.done, showForm: !st.done,

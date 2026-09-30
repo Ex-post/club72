@@ -4,9 +4,12 @@ Static website for Club72 Gym, Sector 72, Mohali. Plain HTML, CSS and JavaScript
 
 ## Pages
 
+Every page is responsive (phones, tablets, laptops, large screens) with a mobile menu and a sticky Call / Enquire bar on phones.
+
+
 | URL | File |
 | --- | --- |
-| `/` | `index.html` (responsive, with motion) |
+| `/` | `index.html` |
 | `/services` | `services.html` |
 | `/pool` | `pool.html` |
 | `/mmaacademy` | `mmaacademy.html` |
@@ -45,7 +48,6 @@ git push -u origin main
 - Replace the photos in `/images` with the original high-resolution files (keep the same file names).
 - Replace the typographic wordmark with the official Club72 logo files.
 - Everything marked "To confirm" on the pages (prices, the biggest-gym claim, pool days, WhatsApp number, MMA coaches and timetable) needs owner sign-off.
-- Only the homepage is fully responsive right now. The other pages use a fixed 1440px desktop layout and show zoomed out on phones.
 - Blog, Gym policies and Privacy policy links are placeholders (`#`).
 
 ## How it works
